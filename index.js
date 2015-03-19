@@ -1,0 +1,1 @@
+module.exports = {view: require('./lib/views/settings'), model: require('./lib/models/settings')};
