@@ -20,9 +20,9 @@ describe('settings', function() {
 
   it('settings icon after click', function() {
     configuration.enableSettings = true;
-    eventbus.toggleView(core.constants.VIEW_SETTINGS);    
+    settings.visible = true;
     testUA.isVisible(settingsview.settingsPopup, true);
-    eventbus.toggleView(core.constants.VIEW_SETTINGS);    
+    settings.visible = false;
     testUA.isVisible(settingsview.settingsPopup, false);
   });
   it('persist with active call', function() {
