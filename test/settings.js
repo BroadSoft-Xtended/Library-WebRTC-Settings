@@ -26,7 +26,6 @@ describe('settings', function() {
     testUA.isVisible(settingsview.settingsPopup, false);
   });
   it('persist with active call', function() {
-    
     var reload = false;
     settings.reload = function() {
       reload = true;
@@ -38,7 +37,6 @@ describe('settings', function() {
     expect(reload).toEqual(true);
   });
   it('persist with userid set:', function() {
-    
     settings.userid = 'someuserid' ;
     expect(settingsview.userid.val()).toEqual('someuserid');
     settingsview.save.trigger("click");
@@ -46,7 +44,6 @@ describe('settings', function() {
     expect($.cookie("settingsPassword")).toEqual(undefined);
   });
   it('persist with display name set', function() {
-    
     expect(settings.displayName).toEqual(undefined);
     settings.displayName = 'somedisplayname';
     settingsview.save.trigger("click");
@@ -66,13 +63,14 @@ describe('settings', function() {
     configuration.encodingResolution = null;
   });
   it('persist with resolution set', function() {
-    
     testUA.val(settingsview.resolutionType, core.constants.STANDARD);
     testUA.val(settingsview.displayResolutionStandard, core.constants.R_640x480);
     testUA.val(settingsview.encodingResolutionStandard, core.constants.R_640x480);
     settingsview.save.trigger("click");
     expect(settingsview.displayResolutionStandard.val()).toEqual(core.constants.R_640x480);
     expect(settingsview.encodingResolutionStandard.val()).toEqual(core.constants.R_640x480);
+    expect(settings.displayResolutionStandard).toEqual(core.constants.R_640x480);
+    expect(settings.encodingResolutionStandard).toEqual(core.constants.R_640x480);
     expect(settings.displayResolution).toEqual(core.constants.R_640x480);
     expect(settings.encodingResolution).toEqual(core.constants.R_640x480);
     expect($.cookie("settingsDisplayResolution")).toEqual(core.constants.R_640x480);
@@ -83,28 +81,30 @@ describe('settings', function() {
     
     expect(settingsview.resolutionType.val()).toEqual(core.constants.STANDARD);
     expect(configuration.encodingResolution).toEqual('');
-    expect(settings.encodingResolution).toEqual(core.constants.R_640x480);
-    // TODO - this is not working
-    // expect(settingsview.displayResolutionStandard.val()).toEqual(core.constants.R_640x480);
-    // expect(settingsview.encodingResolutionStandard.val()).toEqual(core.constants.R_640x480);
+    expect(settings.encodingResolution).toEqual('');
+    expect(settingsview.displayResolutionStandard.val()).toEqual(core.constants.R_640x480);
+    expect(settingsview.encodingResolutionStandard.val()).toEqual(core.constants.R_640x480);
     $.cookie("settingsDisplayResolution", "");
     $.cookie("settingsEncodingResolution", "");
   });
   it('persist with password set', function() {
-    
     settings.password = '121212';
     settingsview.save.trigger("click");
     expect($.cookie("settingsPassword")).toEqual('121212');
     expect(core.utils.getSearchVariable("password")).toEqual(false);
     expect(settings.password).toEqual('121212');
     
-    
     expect($.cookie("settingsPassword")).toEqual('121212');
     expect(settings.password).toEqual('121212');
     $.cookie("settingsPassword", "");
   });
+  it('configuration.password change', function() {    
+    configuration.password = 'testpassword';
+    expect(settings.password).toEqual('testpassword');
+    expect($.cookie("settingsPassword")).toEqual('testpassword');
+    $.cookie("settingsPassword", "");
+  });
   it('setResolution with standard resolution', function() {
-    
     settings.displayResolution = core.constants.R_320x240;
     settings.encodingResolution = core.constants.R_320x240;
     expect(settingsview.resolutionType.val()).toEqual(core.constants.STANDARD);
@@ -114,9 +114,9 @@ describe('settings', function() {
     expect(settingsview.encodingResolutionStandard.hasClass('hidden')).toEqual(false);
   });
   it('setResolution with widescreen resolution', function() {
-    
     settings.displayResolution = core.constants.R_320x180;
     settings.encodingResolution = core.constants.R_320x180;
+    expect(settings.resolutionType).toEqual('widescreen');
     expect(settingsview.resolutionType.val()).toEqual(core.constants.WIDESCREEN);
     expect(settingsview.displayResolutionWidescreen.hasClass('hidden')).toEqual(false);
     expect(settingsview.encodingResolutionWidescreen.hasClass('hidden')).toEqual(false);
@@ -124,7 +124,6 @@ describe('settings', function() {
     expect(settingsview.encodingResolutionStandard.hasClass('hidden')).toEqual(true);
   });
   it('change resolution type', function() {
-    
     testUA.val(settingsview.resolutionType, 'standard');
     expect(settingsview.resolutionType.val()).toEqual('standard');
     expect(settings.resolutionType).toEqual('standard');
