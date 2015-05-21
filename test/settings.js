@@ -12,7 +12,7 @@ describe('settings', function() {
     testUA.createCore('sipstack', config);
     testUA.mockWebRTC();
     testUA.createModelAndView('settings', {settings: require('../')});
-    eventbus = bdsft_client_instances.eventbus_test;
+    eventbus = bdsft_client_instances.test.eventbus;
   });
   afterEach(function(){
     testUA.deleteAllCookies();
