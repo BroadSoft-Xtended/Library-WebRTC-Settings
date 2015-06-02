@@ -23,13 +23,9 @@
         .passwordRow.row
           span.cell Password
           input.password.cell(type='password', value='')
-        .hdRow.row
-          span.cell Start in HD
-          input.hd.cell(type='checkbox')
-          br
-        .autoAnswerRow.row
+        .enableAutoAnswerRow.row
           span.cell Auto Answer
-          input.autoAnswer.cell(type='checkbox')
+          input.enableAutoAnswer.cell(type='checkbox')
         .bandwidthRow.row
           span.cell Bandwidth
           span.cell
@@ -41,9 +37,12 @@
             a.btn.signIn(href='', title='Sign In') Sign In
             a.btn.signOut(href='', title='Sign Out') Sign Out
       #tab2
-        .selfViewDisableRow.row
-          span.cell Disable Self View
-          input.selfViewDisable.cell(type='checkbox')
+        .enableSelfViewRow.row
+          span.cell Enable Self View
+          input.enableSelfView.cell(type='checkbox')
+        .hdRow.row
+          span.cell Use HD
+          input.hd.cell(type='checkbox')
         .resolutionRow
           .row
             span.resolutionTypeRow.cell Mode
@@ -53,27 +52,22 @@
           .row
             span.displayResolutionRow.cell Resolution
             span.cell
-              select.displayResolutionStandard.resolutionSubType(style='display: inline-block;')
+              select.displayResolutionStandard.resolutionSubType
                 option(value='960x720') 960 x 720
                 option(value='640x480') 640 x 480
                 option(value='320x240') 320 x 240
-              select.displayResolutionWidescreen.resolutionSubType(style='display: none;')
+              select.displayResolutionWidescreen.resolutionSubType
                 option(value='1280x720') 1280 x 720
                 option(value='640x360') 640 x 360
                 option(value='320x180') 320 x 180
           .row
             span.encodingResolutionRow.cell Encoding
             span.cell
-              select.encodingResolutionStandard.resolutionSubType(style='display: inline-block;')
+              select.encodingResolutionStandard.resolutionSubType
                 option(value='960x720') 960 x 720
                 option(value='640x480') 640 x 480
                 option(value='320x240') 320 x 240
-              select.encodingResolutionWidescreen.resolutionSubType(style='display: none;')
+              select.encodingResolutionWidescreen.resolutionSubType
                 option(value='1280x720') 1280 x 720
                 option(value='640x360') 640 x 360
                 option(value='320x180') 320 x 180
-        .row
-          span.cell
-            a.btn.save(href='', title='Save Settings') Save Settings
-            a.clear(href='', title='Reset Settings') Reset Settings
-
