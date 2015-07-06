@@ -1,4 +1,4 @@
-.bdsft-client
+.bdsft-webrtc
   .settingsPopup.table.collapse.fixed.fadeable.popup.classes
     .row
       ul.tabs
@@ -11,18 +11,6 @@
             span.icon-th
             | Layout
       #tab1
-        .displayNameRow.row
-          span.cell Display Name
-          input.displayName.cell(type='text', value='')
-        .authenticationUseridRow.row
-          span.cell Auth User ID
-          input.authenticationUserid.cell(type='text', value='')
-        .useridRow.row
-          span.cell User ID
-          input.userid.cell(type='text', value='')
-        .passwordRow.row
-          span.cell Password
-          input.password.cell(type='password', value='')
         .enableAutoAnswerRow.row
           span.cell Auto Answer
           input.enableAutoAnswer.cell(type='checkbox')
@@ -32,10 +20,10 @@
             input.bandwidthLow.short(type='text', maxlength='4', value='', placeholder='low')
             input.bandwidthMed.short(type='text', maxlength='4', value='', placeholder='medium')
             input.bandwidthHigh.short(type='text', maxlength='4', value='', placeholder='high')
-        .row
-          span.cell
-            a.btn.signIn(href='', title='Sign In') Sign In
-            a.btn.signOut(href='', title='Sign Out') Sign Out
+        .displayNameRow.row
+          span.cell Display Name
+          input.displayName.cell(type='text', value='')
+        .authenticationRow
       #tab2
         .enableSelfViewRow.row
           span.cell Enable Self View

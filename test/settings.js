@@ -10,8 +10,10 @@ describe('settings', function() {
     testUA.createCore('cookieconfig');
     testUA.createCore('sipstack');
     testUA.mockWebRTC();
-    testUA.createModelAndView('settings', {settings: require('../')});
-    eventbus = bdsft_client_instances.test.eventbus;
+    testUA.createModelAndView('settings', {
+      settings: require('../'),
+      authentication: require('webrtc-authentication')
+    });
   });
   afterEach(function(){
     testUA.deleteAllCookies();
@@ -32,19 +34,13 @@ describe('settings', function() {
   it('settings icon after click', function() {
     settings.enableSettings = true;
     settings.visible = true;
-    testUA.isVisible(settingsview.settingsPopup, true);
+    testUA.isVisible(settingsview.view.find('.settingsPopup'), true);
     settings.visible = false;
-    testUA.isVisible(settingsview.settingsPopup, false);
-  });
-  it('persist with userid set:', function() {
-    settings.userid = 'someuserid' ;
-    expect(settingsview.userid.val()).toEqual('someuserid');
-    expect(cookieconfig.userid).toEqual("someuserid");
-    expect(cookieconfig.password).toEqual(undefined);
+    testUA.isVisible(settingsview.view.find('.settingsPopup'), false);
   });
   it('persist with display name set', function() {
     expect(settings.displayName).toEqual(undefined);
-    settings.displayName = 'somedisplayname';
+    testUA.val(settingsview.displayName, 'somedisplayname');
     expect(cookieconfig.displayName).toEqual("somedisplayname");
     expect(settings.displayName).toEqual("somedisplayname");
   });
@@ -81,20 +77,6 @@ describe('settings', function() {
     cookieconfig.displayResolution = undefined;
     cookieconfig.encodingResolution = undefined;
   });
-  it('persist with password set', function() {
-    settings.password = '121212';
-    expect(cookieconfig.password).toEqual('121212');
-    expect(settings.password).toEqual('121212');
-    expect(cookieconfig.password).toEqual('121212');
-    expect(settings.password).toEqual('121212');
-    cookieconfig.password = undefined;
-  });
-  it('cookieconfig.password change', function() {    
-    cookieconfig.password = 'testpassword';
-    expect(settings.password).toEqual('testpassword');
-    expect(cookieconfig.password).toEqual('testpassword');
-    cookieconfig.password = undefined;
-  });
   it('setResolution with standard resolution', function() {
     settings.displayResolution = core.constants.R_320x240;
     settings.encodingResolution = core.constants.R_320x240;
@@ -130,7 +112,6 @@ describe('settings', function() {
   });
   it('hide or disable settings when config has corresponding attributes set', function() {
     expect(settingsview.enableAutoAnswerRow.hasClass('hidden')).toEqual(false);
-    expect(settingsview.useridRow.hasClass('hidden')).toEqual(false);
     expect(settingsview.displayNameRow.hasClass('hidden')).toEqual(false);
     expect(settingsview.hdRow.hasClass('hidden')).toEqual(false);
   });
