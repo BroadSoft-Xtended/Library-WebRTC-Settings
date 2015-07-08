@@ -69,11 +69,9 @@
       a
         padding 5px 10px
         display inline-block
-        background #494949
         color #fff
         text-decoration none
         &.active
-          background #04AFF0
           color #fff
     .tabs ~div p, .tabs ~div h3
       margin-bottom 15px
@@ -103,3 +101,12 @@
 
     &.enableSettings:not(.settings-shown)
       {fadeOut}
+      
+@css {
+  .bdsft-webrtc .settingsPopup .tabs a.active {
+    background: <%= settingsTabActiveColor %>;
+  }
+  .bdsft-webrtc .settingsPopup .tabs a {
+    background: <%= settingsTabInactiveColor %>;
+  }
+}
