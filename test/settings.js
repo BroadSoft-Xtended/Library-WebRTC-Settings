@@ -8,11 +8,15 @@ describe('settings', function() {
     core = require('webrtc-core');
     testUA = core.testUA;
     testUA.createCore('cookieconfig');
-    testUA.createCore('sipstack');
+    testUA.createModelAndView('sipstack', {
+      sipstack: require('webrtc-sipstack')
+    });
     testUA.mockWebRTC();
     testUA.createModelAndView('settings', {
       settings: require('../'),
-      authentication: require('webrtc-authentication')
+      authentication: require('webrtc-authentication'),
+      sipstack: require('webrtc-sipstack'),
+      sound: require('webrtc-sound')
     });
   });
   afterEach(function(){
