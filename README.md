@@ -1,10 +1,10 @@
 # Settings
 
-Handles per user settings. Persists using [cookieconfig](../core/lib/cookieconfig.js).
+Handles per user settings. Persists using [cookieconfig](https://github.com/BroadSoft-Xtended/Library-WebRTC-Core/lib/cookieconfig.js).
 
 Model : bdsft_webrtc.default.settings
 View : bdsft_webrtc.default.settingsview
-Dependencies : [Authentication](../authentication), [SIP Stack](../sipstack), [Sound](../sound)
+Dependencies : [Authentication](https://github.com/BroadSoft-Xtended/Library-WebRTC-Authentication), [SIP Stack](https://github.com/BroadSoft-Xtended/Library-WebRTC-SIPStack), [Sound](https://github.com/BroadSoft-Xtended/Library-WebRTC-Sound)
 
 ## Elements
 <a name="elements"></a>

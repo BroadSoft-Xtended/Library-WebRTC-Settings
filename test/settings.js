@@ -1,18 +1,13 @@
-var jsdom = require('mocha-jsdom');
-expect = require('expect');
-jsdom({});
-
+test = require('../node_modules/webrtc-sipstack/test/includes/common')(require('../node_modules/webrtc-core/test/includes/common'));
 describe('settings', function() {
 
   before(function(){
     core = require('webrtc-core');
-    testUA = core.testUA;
-    testUA.createCore('cookieconfig');
-    testUA.createModelAndView('sipstack', {
+    test.createCore('cookieconfig');
+    test.createModelAndView('sipstack', {
       sipstack: require('webrtc-sipstack')
     });
-    testUA.mockWebRTC();
-    testUA.createModelAndView('settings', {
+    test.createModelAndView('settings', {
       settings: require('../'),
       authentication: require('webrtc-authentication'),
       sipstack: require('webrtc-sipstack'),
@@ -20,7 +15,7 @@ describe('settings', function() {
     });
   });
   afterEach(function(){
-    testUA.deleteAllCookies();
+    test.deleteAllCookies();
   });
 
   it('resolution defaults', function() {
@@ -39,13 +34,13 @@ describe('settings', function() {
   it('settings icon after click', function() {
     settings.enableSettings = true;
     settings.visible = true;
-    testUA.isVisible(settingsview.view.find('.settingsPopup'), true);
+    test.isVisible(settingsview.view.find('.settingsPopup'), true);
     settings.visible = false;
-    testUA.isVisible(settingsview.view.find('.settingsPopup'), false);
+    test.isVisible(settingsview.view.find('.settingsPopup'), false);
   });
   it('persist with display name set', function() {
     expect(settings.displayName).toEqual(undefined);
-    testUA.val(settingsview.displayName, 'somedisplayname');
+    test.val(settingsview.displayName, 'somedisplayname');
     expect(cookieconfig.displayName).toEqual("somedisplayname");
     expect(settings.displayName).toEqual("somedisplayname");
   });
@@ -60,9 +55,9 @@ describe('settings', function() {
     cookieconfig.encodingResolution = undefined;
   });
   it('persist with resolution set', function() {
-    testUA.val(settingsview.resolutionType, core.constants.STANDARD);
-    testUA.val(settingsview.displayResolutionStandard, core.constants.R_640x480);
-    testUA.val(settingsview.encodingResolutionStandard, core.constants.R_640x480);
+    test.val(settingsview.resolutionType, core.constants.STANDARD);
+    test.val(settingsview.displayResolutionStandard, core.constants.R_640x480);
+    test.val(settingsview.encodingResolutionStandard, core.constants.R_640x480);
     expect(settingsview.displayResolutionStandard.val()).toEqual(core.constants.R_640x480);
     expect(settingsview.encodingResolutionStandard.val()).toEqual(core.constants.R_640x480);
     expect(settings.displayResolutionStandard).toEqual(core.constants.R_640x480);
@@ -72,7 +67,7 @@ describe('settings', function() {
     expect(cookieconfig.displayResolution).toEqual(core.constants.R_640x480);
     expect(cookieconfig.encodingResolution).toEqual(core.constants.R_640x480);
     
-    testUA.val(settingsview.resolutionType, core.constants.WIDESCREEN);
+    test.val(settingsview.resolutionType, core.constants.WIDESCREEN);
     expect(settings.resolutionType).toEqual(core.constants.WIDESCREEN);
     expect(cookieconfig.displayResolution).toEqual(core.constants.R_640x360);
     expect(cookieconfig.encodingResolution).toEqual(core.constants.R_640x360);
@@ -93,7 +88,7 @@ describe('settings', function() {
     expect(settingsview.encodingResolutionStandard.css('display')).toEqual('inline-block');
   });
   it('change resolution type', function() {
-    testUA.val(settingsview.resolutionType, 'standard');
+    test.val(settingsview.resolutionType, 'standard');
     expect(settingsview.resolutionType.val()).toEqual('standard');
     expect(settings.resolutionType).toEqual('standard');
     expect(settingsview.displayResolutionWidescreen.css('display')).toEqual('none');
