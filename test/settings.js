@@ -101,8 +101,8 @@ describe('settings', function() {
     test.val(settingsview.resolutionType, 'widescreen');
     expect(settings.encodingResolution).toEqual('320x180');
     expect(settings.displayResolution).toEqual('320x180');
-    settings.displayResolution = core.constants.R_1920x1080;
-    settings.encodingResolution = core.constants.R_1920x1080;
+    settings.displayResolution = core.constants.R_1280x720;
+    settings.encodingResolution = core.constants.R_1280x720;
     test.val(settingsview.resolutionType, 'standard');
     expect(settings.encodingResolution).toEqual('960x720');
     expect(settings.displayResolution).toEqual('960x720');
