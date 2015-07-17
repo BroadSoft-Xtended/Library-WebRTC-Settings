@@ -88,6 +88,8 @@ describe('settings', function() {
     expect(settingsview.encodingResolutionStandard.css('display')).toEqual('inline-block');
   });
   it('change resolution type', function() {
+    settings.displayResolution = core.constants.R_320x240;
+    settings.encodingResolution = core.constants.R_320x240;
     test.val(settingsview.resolutionType, 'standard');
     expect(settingsview.resolutionType.val()).toEqual('standard');
     expect(settings.resolutionType).toEqual('standard');
@@ -95,6 +97,15 @@ describe('settings', function() {
     expect(settingsview.encodingResolutionWidescreen.css('display')).toEqual('none');
     expect(settingsview.displayResolutionStandard.css('display')).toEqual('inline-block');
     expect(settingsview.encodingResolutionStandard.css('display')).toEqual('inline-block');
+    expect(settings.encodingResolution).toEqual('320x240');
+    test.val(settingsview.resolutionType, 'widescreen');
+    expect(settings.encodingResolution).toEqual('320x180');
+    expect(settings.displayResolution).toEqual('320x180');
+    settings.displayResolution = core.constants.R_1920x1080;
+    settings.encodingResolution = core.constants.R_1920x1080;
+    test.val(settingsview.resolutionType, 'standard');
+    expect(settings.encodingResolution).toEqual('960x720');
+    expect(settings.displayResolution).toEqual('960x720');
   });
   it('setResolution with widescreen resolution', function() {
     settingsview.displayResolutionStandard[0]._clearMemoizedQueries();
