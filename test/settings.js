@@ -22,7 +22,8 @@ describe('settings', function() {
     expect(settings.encodingResolution).toEqual(core.constants.R_640x480);
     expect(settings.resolutionType).toEqual(core.constants.STANDARD);
     expect(settingsview.encodingResolutionStandard.val()).toEqual(core.constants.R_640x480);
-    // expect(settings.displayResolution).toEqual(core.constants.R_640x480);
+    expect(cookieconfig.displayResolution).toEqual(undefined);
+    expect(cookieconfig.encodingResolution).toEqual(undefined);
   });
   it('hd and resolutionRow visibility', function() {
     expect(settingsview.resolutionRow.css('display'), '');
@@ -41,8 +42,8 @@ describe('settings', function() {
   it('persist with display name set', function() {
     expect(settings.displayName).toEqual(undefined);
     test.val(settingsview.displayName, 'somedisplayname');
-    expect(cookieconfig.displayName).toEqual("somedisplayname");
     expect(settings.displayName).toEqual("somedisplayname");
+    expect(cookieconfig.displayName).toEqual("somedisplayname");
   });
   it('resolution types with config set', function() {
     cookieconfig.displayResolution = core.constants.R_960x720;
