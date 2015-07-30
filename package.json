@@ -13,6 +13,8 @@
     "webrtc-authentication": "BroadSoft-Xtended/Library-WebRTC-Authentication.git",
     "webrtc-sipstack": "BroadSoft-Xtended/Library-WebRTC-SIPStack.git",
     "webrtc-sound": "BroadSoft-Xtended/Library-WebRTC-Sound.git",
+    "webrtc-video": "BroadSoft-Xtended/Library-WebRTC-Video.git",
+    "webrtc-fullscreen": "BroadSoft-Xtended/Library-WebRTC-Fullscreen.git",
     "templatizer": "1.2.1",
     "mocha": "2.1.0",
     "jsdom": "3.1.0",

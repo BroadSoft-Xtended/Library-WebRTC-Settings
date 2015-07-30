@@ -6,7 +6,7 @@ Model : bdsft_webrtc.default.settings
 
 View : bdsft_webrtc.default.settingsview
 
-Dependencies : [Authentication](https://github.com/BroadSoft-Xtended/Library-WebRTC-Authentication), [SIP Stack](https://github.com/BroadSoft-Xtended/Library-WebRTC-SIPStack), [Sound](https://github.com/BroadSoft-Xtended/Library-WebRTC-Sound)
+Dependencies : [Authentication](https://github.com/BroadSoft-Xtended/Library-WebRTC-Authentication), [Fullscreen](https://github.com/BroadSoft-Xtended/Library-WebRTC-Fullscreen), [SIP Stack](https://github.com/BroadSoft-Xtended/Library-WebRTC-SIPStack), [Sound](https://github.com/BroadSoft-Xtended/Library-WebRTC-Sound), [Video](https://github.com/BroadSoft-Xtended/Library-WebRTC-Video)
 
 ## Elements
 <a name="elements"></a>

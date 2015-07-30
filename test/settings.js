@@ -11,7 +11,9 @@ describe('settings', function() {
       settings: require('../'),
       authentication: require('webrtc-authentication'),
       sipstack: require('webrtc-sipstack'),
-      sound: require('webrtc-sound')
+      sound: require('webrtc-sound'),
+      video: require('webrtc-video'),
+      fullscreen: require('webrtc-fullscreen')
     });
   });
   afterEach(function(){
