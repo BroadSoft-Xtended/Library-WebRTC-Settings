@@ -18,7 +18,10 @@ describe('settings', function() {
       sipstack: require('webrtc-sipstack'),
       sound: require('webrtc-sound'),
       video: require('webrtc-video'),
-      fullscreen: require('webrtc-fullscreen')
+      fullscreen: require('webrtc-fullscreen'),
+      eventbus: require('bdsft-sdk-eventbus'),
+      debug: require('bdsft-sdk-debug'),
+      core: require('webrtc-core')
     });
   });
   afterEach(function(){
